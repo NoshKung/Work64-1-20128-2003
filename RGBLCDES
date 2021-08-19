@@ -1,0 +1,50 @@
+//Code RGB By Noshkung
+//YWROBOT
+//Compatible with the Arduino IDE 1.0
+//Library version:1.1
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+
+int analogPin = 0; //ประกาศตัวแปร ให้ analogPin แทนขา analog ขาที่5
+int val = 0; //กำหนดรหัสข้อมูล
+int led1 = 5; //กำหนดรหัสข้อมูล
+int RGB1 = 8; //กำหนดรหัสข้อมูล
+int RGB2 = 9; //กำหนดรหัสข้อมูล
+int RGB3 = 10; //กำหนดรหัสข้อมูล
+
+void setup()
+{
+   Serial.begin(9600);
+   pinMode(led1, OUTPUT);  //กำหนดหน้าที่ให้กับขาของArduino
+   pinMode(RGB1, OUTPUT); //กำหนดหน้าที่ให้กับขาของArduino
+   pinMode(RGB2, OUTPUT); //กำหนดหน้าที่ให้กับขาของArduino
+   pinMode(RGB3, OUTPUT); //กำหนดหน้าที่ให้กับขาของArduino
+  lcd.init();//สั่งการให้LCD ทำงาน
+}
+void loop(){
+  val = analogRead(analogPin);  //อ่านค่าสัญญาณ analog ขา5 เว็บไว้ในตัวแปร val
+  if(val>0){   //เพิ่มเงื่อนไขค่ามากกว่า 0
+        digitalWrite(led1, HIGH); //LED ธรรมดาติด
+        digitalWrite(RGB1, HIGH); //สัง RGB 1 ติด
+        digitalWrite(RGB2, LOW); //สั่ง RGB  2 ดับ
+        digitalWrite(RGB3, LOW); 
+    }
+ if(val>300){ //เพิ่มเงื่อนไขค่ามากกว่า 300
+        digitalWrite(RGB1, LOW); //สั่ง RGB  1 ดับ
+        digitalWrite(RGB2, HIGH); //สัง RGB 2 ติด
+        digitalWrite(RGB3, LOW);  //สัง RGB 3 ดับ
+    }
+ if(val>600){ //เพิ่มเงื่อนไขค่ามากกว่า 300
+        digitalWrite(RGB1, LOW); //สั่ง RGB  1 ดับ
+        digitalWrite(RGB2, LOW); //สั่ง RGB  2 ดับ
+        digitalWrite(RGB3, HIGH); //สัง RGB 3 ติด
+    }
+
+  Serial.print("val = ");       // พิมพ์ข้อมความส่งเข้าคอมพิวเตอร์ "val = "
+  Serial.println(val);          // พิมพ์ค่าของตัวแปร val
+
+  lcd.setCursor(3,0); //กำหนดจุดที่แสดงคำในบรรทัดที่ 81
+  lcd.print("Analog: ");  //แสดงคำที่กำหนด
+  lcd.print(val); //แสดงค่า val
+}
