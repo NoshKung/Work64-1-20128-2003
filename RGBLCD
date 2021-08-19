@@ -82,3 +82,4 @@ void loop(){
   lcd.print(val); //แสดงค่า val
 
 }
+
