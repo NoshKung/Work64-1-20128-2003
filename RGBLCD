@@ -9,17 +9,17 @@ LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars
 int analogPin = 0; //ประกาศตัวแปร ให้ analogPin แทนขา analog ขาที่5
 int val = 0;
 int led1 = 5;
-int led2 = 8;
-int led3 = 9;
-int led4 = 10;
+int RGB1 = 8;
+int RGB2 = 9;
+int RGB3 = 10;
 
 void setup()
 {
    Serial.begin(9600);
    pinMode(led1, OUTPUT);
-   pinMode(led2, OUTPUT);
-   pinMode(led3, OUTPUT);
-   pinMode(led4, OUTPUT);
+   pinMode(RGB1, OUTPUT);
+   pinMode(RGB2, OUTPUT);
+   pinMode(RGB3, OUTPUT);
   lcd.init();                      // initialize the lcd
 
 }
@@ -27,52 +27,54 @@ void setup()
 
 void loop(){
   val = analogRead(analogPin);  //อ่านค่าสัญญาณ analog ขา5 เว็บไว้ในตัวแปร val
-  if(val<300){
+  if(val>0){
         digitalWrite(led1, HIGH);
     }
     else{
         digitalWrite(led1, LOW);
     }
 
+//-----------------------------------------------------------------------------------------------
+
     if(val>300){
         delay(50);
-        digitalWrite(led2, LOW);
+        digitalWrite(RGB1, LOW);
     }
     else{
-        digitalWrite(led2, HIGH);
+        digitalWrite(RGB1, HIGH);
         delay(50);
 
-
+//-----------------------------------------------------------------------------------------------
 
     }
      if(val>=301){
-        digitalWrite(led3, HIGH);
+        digitalWrite(RGB2, HIGH);
     }
     else{
-        digitalWrite(led3, LOW);
+        digitalWrite(RGB2, LOW);
         delay(50);
     }
     if(val<601){
-        digitalWrite(led3, HIGH);
+        digitalWrite(RGB2, HIGH);
     }
     else{
-        digitalWrite(led3, LOW);
+        digitalWrite(RGB2, LOW);
         delay(50);
     }
      if(val<=300){
-        digitalWrite(led3, LOW);
+        digitalWrite(RGB2, LOW);
 
     }
 
-
+//-----------------------------------------------------------------------------------------------
 
 
     if(val<601){
         delay(50);
-        digitalWrite(led4, LOW);
+        digitalWrite(RGB3, LOW);
     }
     else{
-        digitalWrite(led4, HIGH);
+        digitalWrite(RGB3, HIGH);
         delay(50);
     }
   Serial.print("val = ");       // พิมพ์ข้อมความส่งเข้าคอมพิวเตอร์ "val = "
