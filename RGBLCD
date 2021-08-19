@@ -1,4 +1,4 @@
-//Code RGB
+//Code RGB By Noshkung
 //YWROBOT
 //Compatible with the Arduino IDE 1.0
 //Library version:1.1
@@ -7,81 +7,78 @@
 LiquidCrystal_I2C lcd(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 int analogPin = 0; //ประกาศตัวแปร ให้ analogPin แทนขา analog ขาที่5
-int val = 0;
-int led1 = 5;
-int RGB1 = 8;
-int RGB2 = 9;
-int RGB3 = 10;
+int val = 0; //กำหนดรหัสข้อมูล
+int led1 = 5; //กำหนดรหัสข้อมูล
+int RGB1 = 8; //กำหนดรหัสข้อมูล
+int RGB2 = 9; //กำหนดรหัสข้อมูล
+int RGB3 = 10; //กำหนดรหัสข้อมูล
 
 void setup()
 {
    Serial.begin(9600);
-   pinMode(led1, OUTPUT);
-   pinMode(RGB1, OUTPUT);
-   pinMode(RGB2, OUTPUT);
-   pinMode(RGB3, OUTPUT);
-  lcd.init();                      // initialize the lcd
+   pinMode(led1, OUTPUT);  //กำหนดหน้าที่ให้กับขาของArduino
+   pinMode(RGB1, OUTPUT); //กำหนดหน้าที่ให้กับขาของArduino
+   pinMode(RGB2, OUTPUT); //กำหนดหน้าที่ให้กับขาของArduino
+   pinMode(RGB3, OUTPUT); //กำหนดหน้าที่ให้กับขาของArduino
+  lcd.init();                      //สั่งการให้LCD ทำงาน
 
 }
 
 
 void loop(){
   val = analogRead(analogPin);  //อ่านค่าสัญญาณ analog ขา5 เว็บไว้ในตัวแปร val
-  if(val>0){
-        digitalWrite(led1, HIGH);
-    }
-    else{
-        digitalWrite(led1, LOW);
+  if(val>0){   //เพิ่มเงื่อนไขค่ามากกว่า 0
+        digitalWrite(led1, HIGH); //LED ธรรมดาติด
     }
 
 //-----------------------------------------------------------------------------------------------
 
-    if(val>300){
-        delay(50);
+    if(val>300){ //เพิ่มเงื่อนไขค่ามากกว่า 300
+        delay(50); //ตั้งหน่วงเวลา
         digitalWrite(RGB1, LOW);
     }
-    else{
+    else{ //ข้ามาสำหรับการสร้างเงื่อนไขแบบหลายทางเลือก
         digitalWrite(RGB1, HIGH);
-        delay(50);
+        delay(50); //ตั้งหน่วงเวลา
 
 //-----------------------------------------------------------------------------------------------
 
     }
-     if(val>=301){
-        digitalWrite(RGB2, HIGH);
+     if(val>=301){  //เพิ่มเงื่อนไขค่ามากกว่า 301
+        digitalWrite(RGB2, HIGH);//ค่ามากกว่า 301  ติด
     }
-    else{
-        digitalWrite(RGB2, LOW);
-        delay(50);
+    else{ //ข้ามาสำหรับการสร้างเงื่อนไขแบบหลายทางเลือก
+        digitalWrite(RGB2, LOW);//ค่ามากกว่า 301 ดับ
+        delay(50); //ตั้งหน่วงเวลา
     }
-    if(val<601){
-        digitalWrite(RGB2, HIGH);
+    if(val<601){    //เพิ่มเงื่อนไขค่าน้อยกว่า 601
+        digitalWrite(RGB2, HIGH);  //ค่าน้อยกว่า 601 ตืด
     }
-    else{
-        digitalWrite(RGB2, LOW);
-        delay(50);
+    else{ //ข้ามาสำหรับการสร้างเงื่อนไขแบบหลายทางเลือก
+        digitalWrite(RGB2, LOW);  //ค่าน้อยกว่า 601 ดับ
+        delay(50); //ตั้งหน่วงเวลา
     }
-     if(val<=300){
-        digitalWrite(RGB2, LOW);
+     if(val<=300){ //เพิ่มเงื่อนไขค่าน้อยกว่า 300 
+        digitalWrite(RGB2, LOW);//ค่าน้อยกว่า 300 ดับ
 
     }
 
 //-----------------------------------------------------------------------------------------------
 
 
-    if(val<601){
-        delay(50);
-        digitalWrite(RGB3, LOW);
+    if(val<601){    //เพิ่มเงื่อนไขค่าน้อยกว่า 601
+        delay(50); //ตั้งหน่วงเวลา
+        digitalWrite(RGB3, LOW);  //ค่าน้อยกว่า 601 ดับ
     }
-    else{
-        digitalWrite(RGB3, HIGH);
-        delay(50);
+    else{  //ข้ามาสำหรับการสร้างเงื่อนไขแบบหลายทางเลือก
+        digitalWrite(RGB3, HIGH); //ค่าน้อยกว่า 601 ติด
+        delay(50); //ตั้งหน่วงเวลา
     }
   Serial.print("val = ");       // พิมพ์ข้อมความส่งเข้าคอมพิวเตอร์ "val = "
   Serial.println(val);          // พิมพ์ค่าของตัวแปร val
 
-  lcd.setCursor(3,0);
-  lcd.print("Analog: ");
-  lcd.print(val);
+  lcd.setCursor(3,0); //กำหนดจุดที่แสดงคำในบรรทัดที่ 81
+  lcd.print("Analog: ");  //แสดงคำที่กำหนด
+  lcd.print(val); //แสดงค่า val
 
 }
