@@ -35,7 +35,7 @@ void loop(){
         digitalWrite(RGB2, HIGH); //สัง RGB 2 ติด
         digitalWrite(RGB3, LOW);  //สัง RGB 3 ดับ
     }
- if(val>600){ //เพิ่มเงื่อนไขค่ามากกว่า 300
+ if(val>600){ //เพิ่มเงื่อนไขค่ามากกว่า 600
         digitalWrite(RGB1, LOW); //สั่ง RGB  1 ดับ
         digitalWrite(RGB2, LOW); //สั่ง RGB  2 ดับ
         digitalWrite(RGB3, HIGH); //สัง RGB 3 ติด
