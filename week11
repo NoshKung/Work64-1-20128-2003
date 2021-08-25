@@ -1,0 +1,41 @@
+int R = 4;
+int G = 5;
+int B = 2;
+int buttonP = 3;
+int buttonS = 0;
+void setup()
+{
+pinMode(R, OUTPUT); 
+pinMode(G, OUTPUT);
+pinMode(B, OUTPUT);
+pinMode(buttonP, INPUT);
+//digitalWrite(led1, LOW);
+
+}
+void loop()
+{
+buttonS = digitalRead(buttonP); // อ่านค่าสถานะขา3
+if (buttonS == HIGH) { 
+ 
+for(int i=1;i<=9;i++){
+if(i>=1 && i<=3){ 
+digitalWrite(R, HIGH);
+delay(500);
+digitalWrite(R, LOW);
+delay(500);
+}
+ else if(i>=4 && i<=6){ 
+digitalWrite(G, HIGH);
+delay(500);
+digitalWrite(G, LOW);
+delay(500);
+ }
+ else if(i>=7 && i<=9){  
+digitalWrite(B, HIGH);
+delay(500);
+digitalWrite(B, LOW);
+delay(500);
+}
+}
+}
+}
