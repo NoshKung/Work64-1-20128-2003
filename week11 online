@@ -1,48 +1,41 @@
-int B = 5;
-int G = 2;
 int R = 4;
-int BP = 3;
-int BS = 0;
+int G = 5;
+int B = 2;
+int buttonP = 3;
+int buttonS = 0;
 void setup()
-
 {
-   Serial.begin(9600);
-   pinMode(R, OUTPUT);
-   pinMode(G, OUTPUT);
-   pinMode(B, OUTPUT);
-   pinMode(BP, INPUT);
-   pinMode(BS, INPUT);
-   blink(); 
-
+pinMode(R, OUTPUT); 
+pinMode(G, OUTPUT);
+pinMode(B, OUTPUT);
+pinMode(buttonP, INPUT);
+//digitalWrite(led1, LOW);
 
 }
-
-
-
-void loop(){
-}
-
-void blink(){
-    BS = digitalRead(BP);
-    for(int i=1;i<=10;i++){
-    if(i>=1 && i<=3){
-	digitalWrite(R, HIGH);
-	delay(500);
-	digitalWrite(R, LOW);
-	delay(500); 
-    }
-    else if(i>=3 && i<=6){
-	digitalWrite(G, HIGH);
-	delay(500);
-	digitalWrite(G, LOW);
-	delay(500);
-    }
-    else if(i>=6 && i<=9){
-	digitalWrite(B, HIGH);
-	delay(500);
-	digitalWrite(B, LOW);
-	delay(500);
-    }}}
-  
-   
+void loop()
+{
+buttonS = digitalRead(buttonP); // อ่านค่าสถานะขา3
+if (buttonS == HIGH) { 
  
+for(int i=1;i<=9;i++){
+if(i>=1 && i<=3){ 
+digitalWrite(R, HIGH);
+delay(500);
+digitalWrite(R, LOW);
+delay(500);
+}
+ else if(i>=4 && i<=6){ 
+digitalWrite(G, HIGH);
+delay(500);
+digitalWrite(G, LOW);
+delay(500);
+ }
+ else if(i>=7 && i<=9){  
+digitalWrite(B, HIGH);
+delay(500);
+digitalWrite(B, LOW);
+delay(500);
+}
+}
+}
+}
