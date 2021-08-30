@@ -1,0 +1,47 @@
+int rgb[] = {2,3,4};
+int led[] = {8,9,10};
+int buttonP = 5;
+int buttonS = 0;
+void setup()
+{
+Serial.begin(9600);
+pinMode(buttonP, INPUT);
+
+}
+void loop()
+{
+  RGB();
+}
+void RGB()
+{
+buttonS = digitalRead(buttonP); 
+if (buttonS == HIGH) { 
+ 
+for(int i=1;i<=9;i++){
+if(i>=1 && i<=3){ 
+analogWrite(rgb[0], 255);
+analogWrite(led[0], 255);
+delay(500);
+analogWrite(rgb[0], 0);
+analogWrite(led[0], 0);
+delay(500);
+}
+ else if(i>=4 && i<=6){ 
+analogWrite(rgb[1], 255);
+analogWrite(led[1], 255);
+delay(500);
+analogWrite(rgb[1], 0);
+analogWrite(led[1], 0);
+delay(500);
+ }
+ else if(i>=7 && i<=9){  
+analogWrite(rgb[2], 255);
+analogWrite(led[2], 255);
+delay(500);
+analogWrite(rgb[2], 0);
+analogWrite(led[2], 0);
+delay(500);
+}
+}
+}
+}
