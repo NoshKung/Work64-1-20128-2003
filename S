@@ -1,0 +1,44 @@
+const int ECHO_PIN = 9;
+const int TRIG_PIN =10;
+const int buzzer = 11;
+int safetyDistance;
+
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_BUILTIN, OUTPUT);
+pinMode(TRIG_PIN, OUTPUT);
+pinMode(ECHO_PIN, INPUT); 
+pinMode(buzzer, OUTPUT);
+}
+
+float readDistanceCM() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  int duration = pulseIn(ECHO_PIN, HIGH);
+  return duration * 0.034 / 5;
+}
+
+void loop() {
+  float distance = readDistanceCM();
+  safetyDistance = distance;
+
+  bool isNearby = distance < 100;
+  digitalWrite(LED_BUILTIN, isNearby);
+  
+  if (safetyDistance <= 5){
+  digitalWrite(buzzer, HIGH);
+}
+else{
+  digitalWrite(buzzer, LOW);
+}
+
+
+  Serial.print("Measured distance: ");
+  Serial.println(readDistanceCM());
+
+  delay(100);
+}
