@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+  int  x,a;
+  char b;
+
+
+while (a != 0){
+  printf("สูตรคูณแม่ = ");
+    scanf("%d",&a);
+
+system("clear");
+
+ printf("+--------------+\n");
+ if ( a == 2 ){
+  for (x=1; x<=12; x++)printf("| 2  * %2d = %2d |\n", x, x * 2);
+  printf("+--------------+\n");}
+    else if ( a == 3 ){
+  for (x=1; x<=12; x++)printf("| 3  * %2d = %2d |\n", x, x * 3);
+  printf("+--------------+\n");}
+    else if ( a == 4 ){
+  for (x=1; x<=12; x++)printf("| 4  * %2d = %2d |\n", x, x * 4);
+  printf("+--------------+\n");}
+    else if ( a == 5 ){
+  for (x=1; x<=12; x++)printf("| 5  * %2d = %2d |\n", x, x * 5);
+  printf("+--------------+\n");}
+    else if ( a == 6 ){
+  for (x=1; x<=12; x++)printf("| 6  * %2d = %2d |\n", x, x * 6);
+  printf("+--------------+\n");}
+    else if ( a == 7 ){
+  for (x=1; x<=12; x++)printf("| 7  * %2d = %2d |\n", x, x * 7);
+  printf("+--------------+\n");}
+    else if ( a == 8 ){
+  for (x=1; x<=12; x++)printf("| 8  * %2d = %2d |\n", x, x * 8);
+  printf("+--------------+\n");}
+    else if ( a == 9 ){
+  for (x=1; x<=12; x++)printf("| 9  * %2d = %2d |\n", x, x * 9);
+  printf("+--------------+\n");}
+    else if ( a == 10 ){
+  for (x=1; x<=12; x++)printf("| 10  * %2d = %2d |\n", x, x * 10);
+  printf("+--------------+\n");}
+    else if ( a == 11 ){
+  for (x=1; x<=12; x++)printf("| 11  * %2d = %2d |\n", x, x * 11);
+  printf("+--------------+\n");}
+    else if ( a == 12 ){
+  for (x=1; x<=12; x++)printf("| 12  * %2d = %2d |\n", x, x * 12);
+  printf("+--------------+\n");}  
+
+}
+}
