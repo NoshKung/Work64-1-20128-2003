@@ -1,0 +1,58 @@
+#include <LiquidCrystal_I2C.h>
+#include "DHT.h"
+#define DHTPIN 2
+#define DHTTYPE DHT11
+
+LiquidCrystal_I2C lcd(0x27, 20, 4);
+DHT dht(DHTPIN, DHTTYPE);
+int led1 = 4;
+int led2 = 5;
+void setup()
+{
+  dht.begin();
+  lcd.init();
+  lcd.backlight();
+  pinMode(led1, OUTPUT);
+}
+
+void loop()
+{
+  delay(1000); 
+
+  float humi  = dht.readHumidity();
+  float tempC = dht.readTemperature();
+
+  lcd.clear();
+  if (isnan(humi) || isnan(tempC)) {
+    lcd.setCursor(8, 0);
+    lcd.print("Failed");
+  } else {
+    lcd.setCursor(4, 0);  
+    lcd.print("Temp: ");
+    lcd.print(tempC);    
+    lcd.print((char)223); 
+    lcd.print("C");
+
+    lcd.setCursor(4, 2);  
+    lcd.print("Humi: ");
+    lcd.print(humi);    
+    lcd.print("%");
+  }
+ if(tempC <=1.10)
+  {
+    analogWrite(led1, 255);
+  } 
+  else
+  {
+    analogWrite(led1, 0);
+  }  
+
+ if(humi <=25.40)
+  {
+    analogWrite(led2, 255);
+  } 
+  else
+  {
+    analogWrite(led2, 0);
+  }  
+}
