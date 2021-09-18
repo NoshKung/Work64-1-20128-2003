@@ -1,0 +1,154 @@
+const int a=3;
+const int b=4;
+const int c=5;
+const int d=6;
+const int e=7;
+const int f=8;
+const int g=9;
+const int buttonPin = 10;  
+const int buttonPin2 = 11;
+int count = 0;
+int buttonState = 0;
+int buttonState2 = 0;
+int lastButtonState = 0;
+int lastButtonState2 = 0;
+
+void setup() {
+   
+pinMode(buttonPin, INPUT); 
+pinMode(a, OUTPUT);
+pinMode(b, OUTPUT);
+pinMode(c, OUTPUT);
+pinMode(d, OUTPUT);
+pinMode(e, OUTPUT);
+pinMode(f, OUTPUT);
+pinMode(g, OUTPUT);
+}
+void BT1(){buttonState = digitalRead(buttonPin);
+   if (buttonState != lastButtonState)
+   {
+    if (buttonState == HIGH) {
+     count++;
+    }
+
+    else {
+    }
+  }
+
+lastButtonState = buttonState;}
+
+void BT2(){buttonState2 = digitalRead(buttonPin2);
+   if (buttonState2 != lastButtonState2)
+   {
+    if (buttonState2 == HIGH) {
+     count--;
+    }
+
+    else {
+    }
+  }
+
+lastButtonState2 = buttonState2;}
+
+void loop(){
+  	BT1();
+  	BT2();
+  
+switch(count)
+  {
+    case 0:
+    digitalWrite(a, LOW);
+    digitalWrite(b, LOW);
+    digitalWrite(c, LOW);
+    digitalWrite(d, LOW);
+    digitalWrite(e, LOW);
+    digitalWrite(f, LOW);
+    digitalWrite(g, HIGH);
+    break;
+
+        case 1:
+    digitalWrite(a, HIGH);
+    digitalWrite(b, LOW);
+    digitalWrite(c, LOW);
+    digitalWrite(d, HIGH);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, HIGH);
+    break;
+
+        case 2:
+    digitalWrite(a, LOW);
+    digitalWrite(b, LOW);
+    digitalWrite(c, HIGH);
+    digitalWrite(d, LOW);
+    digitalWrite(e, LOW);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, LOW);
+    break;
+        case 3:
+    digitalWrite(a, LOW);
+    digitalWrite(b, LOW);
+    digitalWrite(c, LOW);
+    digitalWrite(d, LOW);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, LOW);
+    break;
+        case 4:
+    digitalWrite(a, HIGH);
+    digitalWrite(b, LOW);
+    digitalWrite(c, LOW);
+    digitalWrite(d, HIGH);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, LOW);
+    digitalWrite(g, LOW);
+    break;
+
+        case 5:
+    digitalWrite(a, LOW);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, LOW);
+    digitalWrite(d, LOW);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, LOW);
+    digitalWrite(g, LOW);
+    break;
+        case 6:
+    digitalWrite(a, LOW);
+    digitalWrite(b, HIGH);
+    digitalWrite(c, LOW);
+    digitalWrite(d, LOW);
+    digitalWrite(e, LOW);
+    digitalWrite(f, LOW);
+    digitalWrite(g, LOW);
+    break;
+
+       case 7:
+    digitalWrite(a, LOW);
+    digitalWrite(b, LOW);
+    digitalWrite(c, LOW);
+    digitalWrite(d, HIGH);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, HIGH);
+    digitalWrite(g, HIGH);
+    break;
+
+        case 8:
+    digitalWrite(a, LOW);
+    digitalWrite(b, LOW);
+    digitalWrite(c, LOW);
+    digitalWrite(d, LOW);
+    digitalWrite(e, LOW);
+    digitalWrite(f, LOW);
+    digitalWrite(g, LOW);
+    break;
+        case 9:
+    digitalWrite(a, LOW);
+    digitalWrite(b, LOW);
+    digitalWrite(c, LOW);
+    digitalWrite(d, LOW);
+    digitalWrite(e, HIGH);
+    digitalWrite(f, LOW);
+    digitalWrite(g, LOW);
+    break;
+ default: count=0; break; } }
